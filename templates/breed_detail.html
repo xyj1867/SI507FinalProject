@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <title>{{ breed['name'] }}</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 30%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: center;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+
+        .float-left-child {
+            float: left;
+        }
+        .inline-block-child {
+            display: inline-block;
+        }
+
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        </style>
+</head>
+
+
+
+
+
+<body>
+    <h1> {{ breed['name'] }} </h1>
+
+    <p>
+        <div>
+            {{ breed['temperament'] }}
+        </div>
+        <br>
+        
+        <div>
+            {{ breed['description'] }}
+        </div>
+        <br>
+    </p>
+
+
+    <table class='child float-left-child'>
+        <tr>
+          <th>Breed</th>
+          <th>{{ breed['name'] }}</th>
+        </tr>
+        <tr>
+            <th>Indoor</th>
+            <td>{{ breed['indoor'] }}</td>
+        </tr>
+        <tr>
+            <th>Affection Level</th>
+            <td>{{ breed['affection_level'] }}</td>
+        </tr>
+        <tr>
+            <th>Adaptability</th>
+            <td>{{ breed['adaptability'] }}</td>
+        </tr>
+        <tr>
+            <th>Child Friendly</th>
+            <td>{{ breed['child_friendly'] }}</td>
+        </tr>
+        <tr>
+            <th>Dog Friendly</th>
+            <td>{{ breed['dog_friendly'] }}</td>
+        </tr>
+        <tr>
+            <th>Energy Level</th>
+            <td>{{ breed['energy_level'] }}</td>
+        </tr>
+        <tr>
+            <th>Health Issues</th>
+            <td>{{ breed['health_issues'] }}</td>
+        </tr>
+        <tr>
+            <th>Shedding Level</th>
+            <td>{{ breed['shedding_level'] }}</td>
+        </tr>
+        <tr>
+            <th>Social Needs</th>
+            <td>{{ breed['social_needs'] }}</td>
+        </tr>
+        <tr>
+            <th>Stranger Friendly</th>
+            <td>{{ breed['stranger_friendly'] }}</td>
+        </tr>
+        <tr>
+            <th>Vocalisation</th>
+            <td>{{ breed['vocalisation'] }}</td>
+        </tr>
+        <tr>
+            <th>Intelligence</th>
+            <td>{{ breed['intelligence'] }}</td>
+        </tr>
+       </table> 
+        
+
+    <p> 
+        {% for cat_img in img_url_list %}
+            <div>
+                <img  class='child float-left-child' src={{ cat_img['url'] }} alt= {{ cat_img['url'] }} height="{{ cat_img['height'] }}" width="{{ cat_img['width'] }}">
+            </div>
+        
+        {% endfor %}
+
+    </p>
+    <p>
+        <div> 
+            <img src={{ url_for('static', filename=img_path) }} alt= {{ breed['name'] }}>
+        </div>
+    </p>
+    <center>
+    <p>
+        <h2 > {{ breed['name'] }} Awards</h2>
+        <br>
+        <div>
+            {{ is_result }}
+        </div>
+        {% for cat in award %}
+        <img  src={{ cat['img_url'] }} alt= {{ cat['img_url'] }}>
+            <div>
+                Name: {{ cat['name'] }}
+                <br>
+                
+                Information: {{ cat['info'] }}
+                <br>
+                Awards: {{ cat['season'] }} {{ cat['award'] }}
+                
+            </div>
+            <br>
+            <br>
+
+        
+        {% endfor %}
+    </p>
+    </center>
+</body>
+</html>

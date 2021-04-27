@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <title>Hello! Please select a cat breed.</title>
+</head>
+
+<body>
+    <form method="GET" action="/handle_select">
+    <p>
+        <label for="breed-select">Choose a pet:</label>
+
+        <select name="breed" id="breed-select">
+            <option value="">--Please choose a cat breed--</option>
+            {% for name in breed_list %}
+                <option value="{{ name }}">{{name}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-default">Go</button>
+    </p>
+    </form>
+
+    <p>
+        <div>
+            Cat breeds origin country distribution:
+        </div>
+        <div>
+            <img src={{ url_for('static', filename="origin_pie.png") }}>
+        </div>
+        
+    </p>
+
+    <p>
+        <div>
+            <h3>Histogram for different features</h3>
+        </div>
+        {% for x in feature_img_list %}
+        <img src={{ url_for('static', filename=x) }} alt={{x}}>
+        {% endfor %}
+        <br>
+        <br>
+
+    </p>
+</body>
+</html>
